@@ -2,7 +2,7 @@
 
 # The namespace this chart will be installed and restricted to,
 # if not specified the chart will be installed to "default"
-defaultNamespace: fleet-helm-example 
+defaultNamespace: fleet-helm-example
 namespace: fleet-helm-example
 
 # Custom helm options
@@ -13,7 +13,7 @@ helm:
   # The directory of the chart in the repo.  Also any valid go-getter supported
   # URL can be used there is specify where to download the chart from.
   # If repo below is set this value if the chart name in the repo
-  chart: "prometheus-blackbox-exporter"
+  chart: "prometheus-rabbitmq-exporter"
 
   # An https to a valid Helm repository to download the chart from
   repo: "https://charts.helm.sh/stable"
@@ -32,14 +32,3 @@ helm:
   values:
     serviceMonitor:
       enabled: true
-      targets:
-        - name: example_fleet                    # Human readable URL that will appear in Prometheus / AlertManager
-          url: https://atp879.cloudport.amagi.tv/  # The URL that blackbox will scrape
-          interval: 15s                    # Scraping interval. Overrides value set in `defaults`
-          scrapeTimeout: 15s               # Scrape timeout. Overrides value set in `defaults`
-          module: http_2xx
-        - name: loki_fleet                 # Human readable URL that will appear in Prometheus / AlertManager
-          url: https://prom.cloudport.amagi.tv/  # The URL that blackbox will scrape
-          interval: 35s                   # Scraping interval. Overrides value set in `defaults`
-          scrapeTimeout: 35s               # Scrape timeout. Overrides value set in `defaults`
-          module: http_2xx
